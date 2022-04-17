@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<launch>
+
+  <!-- base driver (arduino) kinematics, cmd_vel, odom -->
+  <include file="$(find pablowsky_bringup)/launch/robot.launch"/>
+
+  <!-- laser scanner driver -->
+  <include file="$(find pablowsky_bringup)/launch/includes/rplidar.launch"/>
+
+  <!-- SLAM node using gmapping -->
+  <include file="$(find pablowsky_navigation)/launch/gmapping.launch"/>
+
+</launch>
