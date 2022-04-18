@@ -1,0 +1,2 @@
+# footprint from turtlebot3, todo: find proper values for pablowsky
+footprint: [[-0.105, -0.105], [-0.105, 0.105], [0.041, 0.105], [0.041, -0.105]]

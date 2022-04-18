@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="map_path" default="$(find pablowsky_navigation)/maps/42_fab_lab" />
+
+  <!-- navigation goals/orientations -->
+  <!--<rosparam command="load" ns="pablowsky_known_waypoints" file="$(arg map_path)/waypoints.yaml"/>-->
+
+  <!-- visualize navigation goals -->
+  <!--<node pkg="pablowsky_navigation" type="navigation_goals_as_marker" name="navigation_goals_as_marker" />-->
+
+  <!-- particle filter and map server -->
+  <include file="$(find pablowsky_navigation)/launch/amcl.launch" >
+    <arg name="map" value="$(arg map_path)/map.yaml" />
+  </include>
+
+</launch>

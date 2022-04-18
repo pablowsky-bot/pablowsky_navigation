@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="robot_footprint_yaml_path" default="$(find pablowsky_navigation)/config/pablowsky_footprint.yaml" />
+
+  <node pkg="move_base" type="move_base" respawn="true" name="move_base" output="screen">
+    <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+    <rosparam file="$(find pablowsky_navigation)/config/dwa/move_base_params.yaml" command="load" />
+    <rosparam file="$(arg robot_footprint_yaml_path)" command="load"/>
+
+    <rosparam file="$(find pablowsky_navigation)/config/dwa/costmap_common_params.yaml" command="load" ns="global_costmap"/>
+    <rosparam file="$(arg robot_footprint_yaml_path)" command="load" ns="global_costmap"/>
+    <rosparam file="$(find pablowsky_navigation)/config/dwa/global_costmap_params.yaml" command="load" />
+
+    <rosparam file="$(find pablowsky_navigation)/config/dwa/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(arg robot_footprint_yaml_path)" command="load" ns="local_costmap"/>
+    <rosparam file="$(find pablowsky_navigation)/config/dwa/local_costmap_params.yaml" command="load" />
+
+    <rosparam file="$(find pablowsky_navigation)/config/dwa/dwa_local_planner_params.yaml" command="load" ns="DWAPlannerROS" />
+  </node>
+
+</launch>

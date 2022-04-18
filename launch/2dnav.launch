@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="map_path" default="$(find pablowsky_navigation)/maps/42_fab_lab_rear" />
+  <arg name="robot_footprint_yaml_path" default="$(find pablowsky_navigation)/config/pablowsky_footprint.yaml" />
+
+  <!-- laser scanner driver -->
+  <!--<include file="$(find pablowsky_bringup)/launch/includes/rplidar.launch"/>-->
+
+  <!-- map server, localisation (AMCL), nav goals -->
+  <include file="$(find pablowsky_navigation)/launch/includes/nav_common.launch">
+    <arg name="map_path" default="$(arg map_path)" />
+  </include>
+
+  <include file="$(find pablowsky_navigation)/launch/includes/2dnav_dwa.launch"/>
+
+</launch>
